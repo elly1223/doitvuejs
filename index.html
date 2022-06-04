@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-  <title>Vue Instance Lifecycle</title>
+  <title>Vue Component Registration</title>
 </head>
 <body>
   <div id="app">
-    {{ message }}
+    <h3>첫 번째 인스턴스 영역</h3>
+    <my-global-component></my-global-component>
+    <my-local-component></my-local-component>
   </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
+    Vue.component('my-global-component', {
+      template: '<div>전역 컴포넌트입니다.</div>'
+    })
+
+    var cmp = {
+      template: '<div>지역 컴포넌트입니다.</div>'
+    }
+
     new Vue({
       el: '#app',
-      data: {
-        message: 'Hello Vue.js!'
-      },
-      beforeCreate: function() {
-        console.log("beforeCreate")
-      },
-      created: function() {
-        console.log("created")
-      },
-      mounted: function() {
-        console.log("mounted")
-        this.message = "Hello Vue!"
-      },
-      updated: function() {
-        console.log("updated")
-      },
+      components: {
+        'my-local-component': cmp
+      }
     })
   </script>
 </body>
