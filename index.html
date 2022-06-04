@@ -8,6 +8,12 @@
     <my-global-component></my-global-component>
     <my-local-component></my-local-component>
   </div>
+  <hr>
+  <div id="app2">
+    <h3>두 번째 인스턴스 영역</h3>
+    <my-global-component></my-global-component>
+    <my-local-component></my-local-component>
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     Vue.component('my-global-component', {
@@ -23,6 +29,10 @@
       components: {
         'my-local-component': cmp
       }
+    })
+
+    new Vue({
+      el: '#app2',
     })
   </script>
 </body>
