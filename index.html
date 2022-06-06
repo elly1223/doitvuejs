@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <head>
-  <title>v-bind</title>
+  <title>Vue Template - Directives</title>
 </head>
 <body>
   <div id="app">
-    <p v-bind:id="idA">아이디 바인딩</p>
-    <p v-bind:class="classA">클래스 바인딩</p>
-    <p v-bind:style="styleA">스타일 바인딩</p>
+    <a v-if="flag">두잇 Vue.js</a>
+    <ul>
+      <li v-for="system in systems">{{ system }}</li>
+    </ul>
+    <p v-show="flag">두잇 Vue.js</p>
+    <h5 v-bind:id="uid">뷰 입문서</h5>
+    <button v-on:click="popupAlert()">경고 창 버튼</button>
   </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     new Vue({
       el: '#app',
       data: {
-        idA: 10,
-        classA: 'container',
-        styleA: 'color: blue'
+        flag: true,
+        systems: ['android', 'ios', 'window'],
+        uid: 10
+      },
+      methods: {
+        popupAlert: function() {
+          return alert('경고 창 표시')
+        }
       }
     })
   </script>
